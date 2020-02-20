@@ -26,26 +26,28 @@ def play(step)
     end
   turns = turns + 1
   end
-  
+  puts "#{turns} tours"
   return turns
-
 end
 
 def game_end
   puts "Tu es sur le marche 10, bravo! C'est la fin du jeu."
 end
 
-def average_finish_time(turns)
-  #100.times do
-  puts "#{turns} tours"
+def average_finish_time
+  total_turns = 0
+  100.times do
+    turns = perform
+    total_turns = total_turns + turns
+  end
+  puts "#{total_turns} tours totaux en 100 jeux, cela fait une moyenne de #{total_turns / 100} tours par jeu."
 end
 
 def perform
   step = start
-  play(step)
   turns = play(step)
   game_end
-  average_finish_time(turns)
+  return turns
 end
 
-perform
+average_finish_time
